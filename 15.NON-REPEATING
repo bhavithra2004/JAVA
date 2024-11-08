@@ -1,0 +1,24 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) 
+	{
+		String a="pwwkew";
+		int count=1;
+		int s=0,e=0;
+		Set<Character> b=new HashSet<>();
+		while(e<a.length())
+		{
+		  char ch=a.charAt(e);
+		  while(b.contains(ch))
+		  {
+		      b.remove(a.charAt(s));
+		      s++;
+		  }
+		  b.add(ch);
+		  count=b.size();
+		  e=e+1;
+		}
+		System.out.println(count);
+	}
+}
