@@ -1,0 +1,37 @@
+import java.util.Scanner;
+public class Main
+{
+    public static int[] master(int[] nums,int a)
+    {
+        int s=0;
+        int e=nums.length-1;
+        while(s<e)
+        {
+            if(nums[s]+nums[e]==a)
+            {
+            return new int[]{s,e};
+            }
+            else if(nums[s]+nums[e] < a)
+            {
+                s++;
+            }
+            else
+            {
+                e--;
+            }
+        }
+        return new int[]{};
+    }
+	public static void main(String[] args) 
+	{
+		int[] nums={2,7,11,15,16,20};
+		Scanner sc=new Scanner(System.in);
+		System.out.print("Enter the target:");
+		int a=sc.nextInt();
+		int[] res=master(nums,a);
+		if(res.length==2)
+		System.out.print(res[0]+" "+res[1]);
+		else
+		System.out.print("Element not found");
+	}
+}
