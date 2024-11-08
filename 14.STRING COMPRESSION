@@ -1,0 +1,24 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) 
+	{
+	    int count=1;
+		String a="abbcccddd";
+		String b="";
+		for(int i=0;i<a.length();i++)
+		{
+		    if(i+1 <a.length() && a.charAt(i)==a.charAt(i+1))
+		    {
+		        count=count+1;
+		    }
+		    else
+		    {
+		        b=b+a.charAt(i);
+		        b=b+count;
+		        count=1;
+		    }
+		}
+		System.out.println(b);
+	}
+}
