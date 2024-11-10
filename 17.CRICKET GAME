@@ -1,0 +1,87 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		Random r=new Random();
+		System.out.println("Enter team1: ");
+		String t1=sc.nextLine();
+		System.out.println("Enter team2: ");
+		String t2=sc.nextLine();
+		int ans1=r.nextInt(300)+1;
+		int ans2=r.nextInt(300)+1;
+		
+		
+		String[] hint1=new String[3];
+		String[] hint2=new String[3];
+		hint1[0]=ans1>150 ? "It is greater than 150":"It is less than 150";
+		hint1[1]=ans1%2==0 ? "It is even":"It is odd";
+		hint1[2]=ans1%5==0 ? "It is div by 5": "It is not div by 5";
+		hint2[0]=ans2>150 ? "It is greater than 150":"It is less than 150";
+		hint2[1]=ans2%2==0 ? "It is even":"It is odd";
+		hint2[2]=ans2%5==0 ? "It is div by 5": "It is not div by 5";
+		
+		int count=0;
+		String ch;
+		for(int i=0;i<3;i++){
+		    System.out.println("Do u want hint? ");
+		    ch=sc.nextLine();
+		    if(ch.equalsIgnoreCase("y")){
+		        System.out.println(hint1[i]);
+		        count++;
+		    }
+		    else{
+		        break;
+		    }
+		}
+		
+		System.out.println("Guess the Number: ");
+		int g1=sc.nextInt();
+		sc.nextLine();
+		
+		int s1=g1-(count*25);
+		s1=Math.abs(ans1-s1);
+		
+		
+		int count1=0;
+		String ch1;
+		for(int i=0;i<3;i++){
+		    System.out.println("Do u want hint? ");
+		    ch1=sc.nextLine();
+		    if(ch1.equalsIgnoreCase("y")){
+		        System.out.println(hint2[i]);
+		        count++;
+		    }
+		    else{
+		        break;
+		    }
+		}
+		
+		System.out.println("Guess the Number: ");
+		int g2=sc.nextInt();
+		sc.nextLine();
+		
+		int s2=g2-(count*25);
+		s2=Math.abs(ans2-s2);
+		
+		
+		System.out.println("Team1 corect number is "+ans1);
+		System.out.println("Team1 prediction is: "+g1);
+		System.out.println("Team1 score is: "+s1);
+		
+		System.out.println("Team2 corect number is "+ans2);
+		System.out.println("Team2 prediction is: "+g2);
+		System.out.println("Team2 score is: "+s2);
+		
+		
+		if(s1>s2){
+		    System.out.println("Team1 is winner");
+		}
+		else{
+		     System.out.println("Team2 is winner");
+		}
+		
+	}
+}
