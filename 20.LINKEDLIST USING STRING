@@ -1,0 +1,125 @@
+import java.util.*;
+
+class SinglyLinkedList {
+    Node head = null;
+    class Node {
+        List<Integer> data;
+        Node next;
+
+        Node(List<Integer> l) {
+            data = l;
+            next = null;
+        }
+    }
+    public void insertAtBeginning(List<Integer> l) {
+        Node newnode = new Node(l);
+        newnode.next = head;
+        head = newnode;
+        System.out.println("Inserted Successfully at the beginning.");
+    }
+    public void insertAtEnd(List<Integer> l) {
+        Node newnode = new Node(l);
+        if (head == null) {
+            head = newnode;
+        } else {
+            Node current = head;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = newnode;
+        }
+        System.out.println("Inserted Successfully at the end.");
+    }
+    public void delete(int position) {
+        if (head == null) {
+            System.out.println("List is empty, nothing to delete.");
+            return;
+        }
+        if (position == 1) {
+            head = head.next;
+            System.out.println("Deleted node at position " + position);
+            return;
+        }
+        Node current = head;
+        for (int i = 1; i < position - 1; i++) {
+            if (current.next == null) {
+                System.out.println("Position out of bounds");
+                return;
+            }
+            current = current.next;
+        }
+        if (current.next == null) {
+            System.out.println("Position out of bounds");
+            return;
+        }
+        current.next = current.next.next;
+        System.out.println("Deleted node at position " + position);
+    }
+    public void display() {
+        if (head == null) {
+            System.out.println("List is empty.");
+            return;
+        }
+
+        Node current = head;
+        while (current != null) {
+            System.out.print(current.data + " -> ");
+            current = current.next;
+        }
+        System.out.println("null");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner io = new Scanner(System.in);
+        System.out.println("Singly Linked List (Using List): ");
+        System.out.println("*");
+        System.out.println("You can perform the operations listed below");
+        System.out.println("-->1. Insert at beginning");
+        System.out.println("-->2. Insert at end");
+        System.out.println("-->3. Delete at position");
+        System.out.println("-->4. Display");
+        System.out.println("-->5. Exit");
+        System.out.println("*");
+
+        int choice = -1;
+        SinglyLinkedList sll = new SinglyLinkedList();
+
+        while (choice != 5) {
+            System.out.print("Enter your choice: ");
+            choice = io.nextInt();
+
+            List<Integer> list = new ArrayList<>();
+
+            if (choice == 1) {
+                System.out.print("Enter the size of your list: ");
+                int n = io.nextInt();
+                for (int i = 0; i < n; i++) {
+                    System.out.print((i + 1) + " element -> ");
+                    list.add(io.nextInt());
+                }
+                sll.insertAtBeginning(list);
+            } else if (choice == 2) {
+                System.out.print("Enter the size of your list: ");
+                int n = io.nextInt();
+                for (int i = 0; i < n; i++) {
+                    System.out.print((i + 1) + " element -> ");
+                    list.add(io.nextInt());
+                }
+                sll.insertAtEnd(list);
+            } else if (choice == 3) {
+                System.out.print("Enter the position where you want to delete: ");
+                int pos = io.nextInt();
+                sll.delete(pos);
+            } else if (choice == 4) {
+                System.out.println("The elements in the linked list are:");
+                sll.display();
+            } else if (choice == 5) {
+                System.out.println("Exiting the program.");
+            } else {
+                System.out.println("Please enter a valid choice.");
+            }
+        }
+    }
+}
