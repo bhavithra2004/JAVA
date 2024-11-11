@@ -1,0 +1,59 @@
+import java.util.*;
+class Graph
+{
+	int vertices;
+	LinkedList<Integer>[] adjList;
+	Graph(int vertices)
+	{
+		this.vertices=vertices;
+		adjList=new LinkedList[vertices];
+		for(int i=0; i<vertices; i++)
+		{
+			adjList[i]=new LinkedList<>();
+		}
+	}
+	public void addedge(int a,int b)
+	{
+		adjList[a].add(b);
+		adjList[b].add(a);
+
+	}
+	public void bfs(int start)
+	{
+		boolean[] visited=new boolean[vertices];
+		Queue<Integer> q=new LinkedList<>();
+		visited[start]=true;
+		q.add(start);
+		System.out.println("We are starting bfs from ");
+
+		while(!q.isEmpty())
+		{
+			int vertex=q.poll();
+			System.out.println(vertex+" ");
+			for(int a:adjList[vertex])
+			{
+				if(!visited[a])
+				{
+					visited[a]=true;
+					q.add(a);
+				}
+			}
+		}
+	}
+}
+public class Main
+{
+	public static void main(String[] args)
+	{
+
+		Graph g=new Graph(6);
+		g.addedge(0,1);
+		g.addedge(0,2);
+		g.addedge(1,3);
+		g.addedge(3,5);
+		g.addedge(5,4);
+		g.addedge(2,4);
+		g.bfs(0);
+
+	}
+}
