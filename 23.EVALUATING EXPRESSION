@@ -1,0 +1,76 @@
+import java.util.Stack;
+
+public class Main {
+    public static int gilli(String str) {
+        Stack<Integer> num = new Stack<>();
+        Stack<Character> symbol = new Stack<>();
+        
+        int i = 0;
+        while (i < str.length()) {
+            char c = str.charAt(i);
+
+            if (Character.isDigit(c)) {
+                int a = 0;
+                while (i < str.length() && Character.isDigit(str.charAt(i))) {
+                    a = a * 10 + (str.charAt(i) - '0');
+                    i++;
+                }
+                num.push(a);
+            } 
+            
+            else if (c == '+' || c == '-' || c == '*' || c == '/') {
+                while (!symbol.isEmpty() && precedence(symbol.peek()) >= precedence(c)) {
+                    char op = symbol.pop();
+                    int num2 = num.pop();
+                    int num1 = num.pop();
+                    num.push(operation(op, num1, num2));
+                }
+                symbol.push(c);
+                i++;
+            } 
+           
+            else {
+                i++;
+            }
+        }
+
+        while (!symbol.isEmpty()) {
+            char op = symbol.pop();
+            int num2 = num.pop();
+            int num1 = num.pop();
+            num.push(operation(op, num1, num2));
+        }
+
+        return num.pop();
+    }
+
+    
+    public static int precedence(char ch) {
+        switch (ch) {
+            case '+':
+            case '-': 
+                return 1;
+            case '*':
+            case '/': 
+                return 2;
+            default:
+                return -1;
+        }
+    }
+
+    public static int operation(char op, int num1, int num2) {
+        switch (op) {
+            case '+': return num1 + num2;
+            case '-': return num1 - num2;
+            case '*': return num1 * num2;
+            case '/': return num1 / num2;
+            default: return 0;
+        }
+    }
+
+    public static void main(String[] args) {
+        String str = "17+8-9/2+3*3";
+        int res = gilli(str);
+        System.out.println(res);  // Expected output: 28
+    }
+}
