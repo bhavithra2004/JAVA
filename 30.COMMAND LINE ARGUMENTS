@@ -1,0 +1,12 @@
+import java.util.*;
+public class Main {
+    public static void main(String[] args) 
+    {
+         if (args.length > 0) {
+            String a= args[0]; 
+            for (int i = 0; i < a.length(); i++) {
+                System.out.println(a);
+            }
+        } 
+    }
+}
