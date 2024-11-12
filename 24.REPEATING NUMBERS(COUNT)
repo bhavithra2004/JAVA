@@ -1,0 +1,27 @@
+import java.util.*;
+public class Main
+{
+    public static void logic(int a)
+    {
+        HashMap<Character,Integer>b=new HashMap<>();
+        String str=Integer.toString(a);
+        for(int i=0;i<str.length();i++)
+        {
+            char ch=str.charAt(i);
+            b.put(ch,b.getOrDefault(ch,0)+1);
+        }
+        int count=0;
+        for(int d:b.values())
+        {
+            if(d>1)
+            count++;
+        }
+        System.out.print(count);
+    
+    }
+	public static void main(String[] args) 
+	{
+		int a=994437;
+		logic(a);
+	}
+}
