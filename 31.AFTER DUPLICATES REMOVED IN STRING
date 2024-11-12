@@ -1,0 +1,21 @@
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        if (args.length>0) {
+            String a=args[0]; 
+            Set<Character>b=new HashSet<>();
+            System.out.print("Duplicate characters removed: ");
+            for (char c:a.toCharArray()) 
+            {
+                if(b.add(c)) 
+                { 
+                    System.out.print(c);
+                }
+            }
+            System.out.println(); 
+        } else 
+        {
+            System.out.println("give your name in command-line argument");
+        }
+    }
+}
