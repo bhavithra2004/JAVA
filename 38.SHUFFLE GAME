@@ -1,0 +1,38 @@
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) 
+    {
+        Scanner sc = new Scanner(System.in);
+
+        int team = 5;
+        System.out.println("Enter team names for " + team + " teams:");
+        String[] arr = new String[team];
+        for (int i = 0; i < team; i++) 
+        {
+            
+            arr[i] = sc.nextLine();
+        }
+
+        int meeting = 2; 
+        ArrayList<String> Matches = new ArrayList<>();
+        for (int i = 0; i < team; i++) 
+        {
+            for (int j = i + 1; j < team; j++) 
+            {
+                for (int k = 0; k < meeting; k++) 
+                {
+                    Matches.add(arr[i] + " vs " + arr[j]);
+                }
+            }
+        }
+
+        System.out.println("Match Schedule:");
+        for (String match : Matches) {
+            System.out.println(match);
+        }
+
+        sc.close();
+    }
+}
