@@ -1,0 +1,25 @@
+import java.util.*;
+public class Main{
+  public static void main(String[]args){
+     Scanner sc=new Scanner(System.in);
+     String S=sc.nextLine();
+     int n=S.length();
+     String ch="AEIOUaeiou";//"1234567890" TO CHECK CONTAINS ONLY NUMBERS
+     boolean b=true;
+     
+  for(int i=0;i<n;i++){
+          
+          if(!ch.contains(String.valueOf(S.charAt(i)))){
+              b=false;
+              break;
+          }
+  }
+  
+         if(b){
+             System.out.print("Yes");
+             
+         }else{
+             System.out.print("No");
+         }
+}
+}
