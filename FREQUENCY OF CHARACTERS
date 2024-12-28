@@ -1,0 +1,34 @@
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String s=sc.nextLine();
+        int c=1;
+        int n=s.length();
+
+        for (int i=0;i<n;i++) {
+            char r=s.charAt(i);
+            boolean alreadyPrinted = false;
+
+            for (int k=0;k<i;k++) {
+                if (s.charAt(k)==r) {
+                    alreadyPrinted = true;
+                    break;
+                }
+            }
+
+            if (alreadyPrinted) {
+                continue; 
+            }
+
+            for (int j=i+1;j<n;j++) {
+                if (r==s.charAt(j)) {
+                    c++;
+                }
+            }
+
+            System.out.println(r+ " "+c);
+            c=1;
+        }
+    }
+}
